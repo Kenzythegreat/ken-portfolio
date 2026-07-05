@@ -24,14 +24,16 @@ const COMPANIES = [
   { name: 'Cymate', meta: 'USA — 9 months — Brand & Marketing Manager', current: true },
 ]
 
+import Reveal from './Reveal.jsx'
+
 export default function Experience() {
   return (
     <section id="experience" className="section-pad">
       <div className="wrap">
-        <div className="section-head">
+        <Reveal as="div" className="section-head">
           <span className="section-head__num">04</span>
           <h2 className="section-head__title">Work Experience</h2>
-        </div>
+        </Reveal>
 
         <table className="exp-table">
           <thead>
@@ -42,26 +44,31 @@ export default function Experience() {
             </tr>
           </thead>
           <tbody>
-            {ROLES.map((r) => (
-              <tr key={r.role}>
+            {ROLES.map((r, i) => (
+              <Reveal as="tr" delay={i * 80} key={r.role}>
                 <td>{r.role}</td>
                 <td>{r.period}</td>
                 <td>{r.details}</td>
-              </tr>
+              </Reveal>
             ))}
           </tbody>
         </table>
 
         <p className="eyebrow" style={{ marginBottom: 8 }}>Companies I've Worked With</p>
         <div className="companies-list">
-          {COMPANIES.map((c) => (
-            <div className={`company-row ${c.current ? 'company-row--current' : ''}`} key={c.name}>
+          {COMPANIES.map((c, i) => (
+            <Reveal
+              as="div"
+              className={`company-row ${c.current ? 'company-row--current' : ''}`}
+              delay={i * 70}
+              key={c.name}
+            >
               <div>
                 <div className="company-row__name">{c.name}</div>
                 <div className="company-row__meta">{c.meta}</div>
               </div>
               {c.current && <span className="pill company-row__badge">Current</span>}
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

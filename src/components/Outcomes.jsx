@@ -21,22 +21,24 @@ const OUTCOMES = [
   },
 ]
 
+import Reveal from './Reveal.jsx'
+
 export default function Outcomes() {
   return (
     <section id="outcomes" className="section-pad">
       <div className="wrap">
-        <div className="section-head">
+        <Reveal as="div" className="section-head">
           <span className="section-head__num">03</span>
           <h2 className="section-head__title">Delivered Outcomes</h2>
-        </div>
+        </Reveal>
 
         <div className="outcomes-grid">
-          {OUTCOMES.map((o) => (
-            <div className="outcome-item" key={o.num}>
+          {OUTCOMES.map((o, i) => (
+            <Reveal as="div" className="outcome-item" delay={i * 90} key={o.num}>
               <span className="outcome-item__num">{o.num}</span>
               <h3 className="outcome-item__title">{o.title}</h3>
               <p className="outcome-item__desc">{o.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

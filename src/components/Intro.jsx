@@ -1,18 +1,20 @@
+import Reveal from './Reveal.jsx'
+
 export default function Intro() {
   return (
     <section id="about" className="intro">
       <div className="wrap">
-        <div className="section-head">
+        <Reveal as="div" className="section-head">
           <span className="section-head__num">01</span>
           <h2 className="section-head__title">Introduction</h2>
-        </div>
+        </Reveal>
 
         <div className="intro__grid">
-          <div className="intro__photo">
+          <Reveal as="div" className="intro__photo">
             <img src="/photos/ken-headshot.png" alt="Ken Curtina" />
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal as="div" delay={120}>
             <h3 className="intro__name">
               I'm Mcquinly <span className="script-accent">— call me "Ken."</span>
             </h3>
@@ -65,7 +67,7 @@ export default function Intro() {
                 <div className="intro__stat-label">Age I Started</div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
