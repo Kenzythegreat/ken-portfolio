@@ -31,8 +31,6 @@ export default function ProofOfWork() {
 
   return (
     <section className="pow">
-      <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', marginBottom: 24 }}>Proof of Work</p>
-
       <div className="pow-track">
         <div className="pow-row">
           {[...IMAGES, ...IMAGES].map((img, i) => (

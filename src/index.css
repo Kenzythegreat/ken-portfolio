@@ -490,7 +490,7 @@ section { position: relative; }
 
 .pow-item {
   flex-shrink: 0;
-  height: 190px;
+  height: 280px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(138, 138, 141, 0.25);
@@ -551,7 +551,7 @@ section { position: relative; }
 }
 
 @media (max-width: 600px) {
-  .pow-item { height: 140px; }
+  .pow-item { height: 200px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

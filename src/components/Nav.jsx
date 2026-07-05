@@ -8,6 +8,7 @@ export default function Nav() {
         <nav className="nav__links nav__links--left">
           <Link to="/">Home</Link>
           <Link to="/tools">Tools I Used</Link>
+          <Link to="/proof-of-work">Proof of Work</Link>
         </nav>
         <a href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
           Book a Call

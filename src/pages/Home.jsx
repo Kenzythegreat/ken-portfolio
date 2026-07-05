@@ -4,7 +4,6 @@ import Intro from '../components/Intro.jsx'
 import Matcha from '../components/Matcha.jsx'
 import Skills from '../components/Skills.jsx'
 import Outcomes from '../components/Outcomes.jsx'
-import ProofOfWork from '../components/ProofOfWork.jsx'
 import Experience from '../components/Experience.jsx'
 import CTA from '../components/CTA.jsx'
 
@@ -20,7 +19,6 @@ export default function Home() {
       <Matcha />
       <Skills />
       <Outcomes />
-      <ProofOfWork />
       <Experience />
       <CTA />
     </>
