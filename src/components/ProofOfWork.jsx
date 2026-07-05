@@ -19,6 +19,21 @@ const IMAGES = FILES.map((name) => ({
   full: `/photos/${encodeURIComponent(name)}.png`,
 }))
 
+const LABELED_FILES = [
+  { name: 'proof', label: 'Inbox Management' },
+  { name: 'proof 1', label: 'Lead Generation' },
+  { name: 'proof 2', label: 'Email Infrastructure' },
+  { name: 'proof 3', label: 'Email Infrastructure' },
+  { name: 'proof 4', label: 'Campaign Management' },
+  { name: 'proof 5', label: 'General VA Support' },
+]
+
+const LABELED_IMAGES = LABELED_FILES.map(({ name, label }) => ({
+  thumb: `/photos/thumbs/${encodeURIComponent(name)}.jpg`,
+  full: `/photos/${encodeURIComponent(name)}.png`,
+  label,
+}))
+
 export default function ProofOfWork() {
   const [active, setActive] = useState(null)
 
@@ -42,6 +57,25 @@ export default function ProofOfWork() {
               aria-label="Open preview"
             >
               <img src={img.thumb} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>By the Numbers</p>
+
+      <div className="pow-track">
+        <div className="pow-row pow-row--reverse">
+          {[...LABELED_IMAGES, ...LABELED_IMAGES].map((img, i) => (
+            <button
+              type="button"
+              className="pow-item pow-item--labeled"
+              key={i}
+              onClick={() => setActive(img.full)}
+              aria-label="Open preview"
+            >
+              <img src={img.thumb} alt="" loading="lazy" />
+              <span className="pow-item__label">{img.label}</span>
             </button>
           ))}
         </div>
