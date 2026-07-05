@@ -8,7 +8,8 @@ export default function Hero() {
         <div className="hero__frame">
           <span className="hero__tag hero__tag--1 pill pill--accent" style={{ animationDelay: '0.5s, 1.3s', animationDuration: '0.8s, 5.4s' }}>Inbox Manager</span>
           <span className="hero__tag hero__tag--2 pill pill--accent" style={{ animationDelay: '0.6s, 1.4s', animationDuration: '0.8s, 4.6s' }}>Cold Email Strategist</span>
-          <span className="hero__tag hero__tag--3 pill pill--accent" style={{ animationDelay: '0.7s, 1.5s', animationDuration: '0.8s, 5s' }}>7 Years Experience</span>
+          <span className="hero__tag hero__tag--3 pill pill--accent" style={{ animationDelay: '0.7s, 1.5s', animationDuration: '0.8s, 5.2s' }}>Social Media Management</span>
+          <span className="hero__tag hero__tag--4 pill pill--accent" style={{ animationDelay: '0.8s, 1.6s', animationDuration: '0.8s, 5s' }}>7 Years Experience</span>
 
           <p className="eyebrow hero__eyebrow fade-up" style={{ display: 'block', justifyContent: 'center', animationDelay: '0s' }}>Ken Curtina</p>
 
