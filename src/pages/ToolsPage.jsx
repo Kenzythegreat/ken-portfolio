@@ -14,8 +14,8 @@ export default function ToolsPage() {
           <p className="eyebrow fade-up" style={{ display: 'flex', justifyContent: 'center' }}>Ken Curtina</p>
           <h1 className="page-header__title fade-up" style={{ animationDelay: '0.1s' }}>Tools I Use</h1>
           <p className="hero__lede fade-up" style={{ margin: '18px auto 0', animationDelay: '0.2s' }}>
-            Everything I run outbound campaigns, manage inboxes, and keep operations
-            tidy with — organized by category.
+            Everything I run outbound campaigns, manage inboxes, and keep
+            operations tidy with.
           </p>
         </div>
       </section>
