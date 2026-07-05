@@ -4,3 +4,4 @@ dist
 *.local
 .env
 .env.*
+.claude/scheduled_tasks.lock

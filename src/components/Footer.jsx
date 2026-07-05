@@ -8,7 +8,6 @@ export default function Footer() {
         <nav className="footer__nav">
           <Link to="/">Home</Link>
           <Link to="/tools">Tools I Used</Link>
-          <Link to="/#travel">Travel Tales</Link>
           <Link to="/#book">Book a Call</Link>
         </nav>
         <span className="footer__copy">© 2026 Ken Curtina</span>

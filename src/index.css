@@ -855,41 +855,6 @@ section { position: relative; }
   gap: 10px;
 }
 
-/* ---------- STRIP / TRAVEL TEASER ---------- */
-.strip {
-  padding: 100px 0;
-}
-
-.strip-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 760px) {
-  .strip-grid { grid-template-columns: 1fr 1fr; }
-}
-
-.strip-photo {
-  aspect-ratio: 3 / 4;
-  border-radius: 16px;
-  background: linear-gradient(160deg, var(--indigo), var(--ink));
-  border: 1px solid rgba(138, 138, 141, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.strip-photo::after {
-  content: attr(data-label);
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(245, 244, 240, 0.4);
-}
-
 /* ---------- FOOTER / CTA ---------- */
 .cta {
   padding: 120px 0;

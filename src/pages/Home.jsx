@@ -5,7 +5,6 @@ import Matcha from '../components/Matcha.jsx'
 import Skills from '../components/Skills.jsx'
 import Outcomes from '../components/Outcomes.jsx'
 import Experience from '../components/Experience.jsx'
-import Travel from '../components/Travel.jsx'
 import CTA from '../components/CTA.jsx'
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
       <Skills />
       <Outcomes />
       <Experience />
-      <Travel />
       <CTA />
     </>
   )
