@@ -16,6 +16,10 @@ export default function CTA() {
           <span className="btn__arrow">&#8599;</span>
         </a>
       </Reveal>
+
+      <Reveal as="div" className="cta__mockup-wrap" delay={150} style={{ position: 'relative', zIndex: 1 }}>
+        <img src="/photos/cta-laptop.png" alt="Ken Curtina on a laptop screen" className="cta__mockup" />
+      </Reveal>
     </section>
   )
 }
