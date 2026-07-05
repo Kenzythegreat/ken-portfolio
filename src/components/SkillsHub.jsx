@@ -1,31 +1,41 @@
 const SKILLS = [
   { num: '01', title: 'Inbox Management', tag: 'Smartlead · Front' },
-  { num: '02', title: 'Lead Generation', tag: 'Apollo · Listkit' },
-  { num: '03', title: 'Campaign Management', tag: 'Smartlead' },
-  { num: '04', title: 'Email Infrastructure', tag: 'Domains · Warmup' },
-  { num: '05', title: 'General VA Support', tag: 'Ops Support' },
+  { num: '02', title: 'Social Media Management', tag: 'Canva · Scheduling' },
+  { num: '03', title: 'Lead Generation', tag: 'Apollo · Listkit' },
+  { num: '04', title: 'Campaign Management', tag: 'Smartlead' },
+  { num: '05', title: 'Email Infrastructure', tag: 'Domains · Warmup' },
+  { num: '06', title: 'Content Creation', tag: 'Copy · Captions' },
+  { num: '07', title: 'Graphic Designing', tag: 'Canva' },
+  { num: '08', title: 'General VA Support', tag: 'Ops Support' },
 ]
 
-// desktop: [left%, top%, anchor] — anchor = which edge of the node card sits on the point
+// desktop: 8-point ring, clockwise from top-left — [left%, top%, anchor]
 const DESKTOP_POS = [
-  ['12.5%', '15%', 'anchor-bottom'],
-  ['87.5%', '15%', 'anchor-bottom'],
-  ['5%', '50%', 'anchor-right'],
-  ['95%', '50%', 'anchor-left'],
-  ['50%', '90%', 'anchor-top'],
+  ['12.5%', '15.4%', 'anchor-bottom'],  // topLeft
+  ['50%', '7.7%', 'anchor-bottom'],     // topCenter
+  ['87.5%', '15.4%', 'anchor-bottom'],  // topRight
+  ['78%', '50%', 'anchor-left'],        // rightMid
+  ['87.5%', '84.6%', 'anchor-top'],     // bottomRight
+  ['50%', '92.3%', 'anchor-top'],       // bottomCenter
+  ['12.5%', '84.6%', 'anchor-top'],     // bottomLeft
+  ['22%', '50%', 'anchor-right'],       // leftMid
 ]
 
 const DESKTOP_PATHS = [
-  'M74,37 L74,15 L20,15',
-  'M86,37 L86,15 L140,15',
-  'M67,50 L8,50',
-  'M93,50 L152,50',
-  'M80,63 L80,90',
+  'M92,50 L92,20 L25,20',
+  'M100,50 L100,10',
+  'M108,50 L108,20 L175,20',
+  'M115,65 L156,65',
+  'M108,80 L108,110 L175,110',
+  'M100,80 L100,120',
+  'M92,80 L92,110 L25,110',
+  'M85,65 L44,65',
 ]
 
 // mobile: single centered spine, nodes threaded straight down it
-const MOBILE_LEVELS = [55, 95, 135, 175, 215]
-const MOBILE_POS = MOBILE_LEVELS.map((y) => ['50%', `${(y / 240) * 100}%`, 'anchor-center'])
+const MOBILE_LEVELS = [55, 95, 135, 175, 215, 255, 295, 335]
+const MOBILE_VIEW_H = 360
+const MOBILE_POS = MOBILE_LEVELS.map((y) => ['50%', `${(y / MOBILE_VIEW_H) * 100}%`, 'anchor-center'])
 const MOBILE_PATHS = []
 
 function Lines({ paths, extra }) {
@@ -49,7 +59,7 @@ function Lines({ paths, extra }) {
             d={d}
             className="hub-line-pulse"
             pathLength="100"
-            style={{ animationDelay: `${i * 0.5}s`, animationDuration: '3.2s' }}
+            style={{ animationDelay: `${i * 0.4}s`, animationDuration: '3.2s' }}
           />
         </g>
       ))}
@@ -86,7 +96,7 @@ export default function SkillsHub() {
   return (
     <div className="hub-wrap">
       <div className="hub-diagram hub-diagram--desktop">
-        <svg className="hub-svg" viewBox="0 0 160 100" preserveAspectRatio="none">
+        <svg className="hub-svg" viewBox="0 0 200 130" preserveAspectRatio="none">
           <Lines paths={DESKTOP_PATHS} />
         </svg>
         <Core />
@@ -94,8 +104,8 @@ export default function SkillsHub() {
       </div>
 
       <div className="hub-diagram hub-diagram--mobile">
-        <svg className="hub-svg" viewBox="0 0 100 240" preserveAspectRatio="none">
-          <Lines paths={MOBILE_PATHS} extra="M50,31 L50,215" />
+        <svg className="hub-svg" viewBox={`0 0 100 ${MOBILE_VIEW_H}`} preserveAspectRatio="none">
+          <Lines paths={MOBILE_PATHS} extra="M50,31 L50,335" />
         </svg>
         <Core />
         <Nodes positions={MOBILE_POS} />

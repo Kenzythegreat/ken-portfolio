@@ -542,7 +542,7 @@ section { position: relative; }
 /* ---------- SKILLS HUB ---------- */
 .hub-wrap {
   position: relative;
-  max-width: 780px;
+  max-width: 940px;
   margin: 0 auto;
 }
 
@@ -551,19 +551,19 @@ section { position: relative; }
 }
 
 .hub-diagram--desktop {
-  aspect-ratio: 160 / 100;
+  aspect-ratio: 200 / 130;
   display: none;
 }
 
 .hub-diagram--mobile {
-  aspect-ratio: 100 / 240;
+  aspect-ratio: 100 / 360;
   display: block;
   max-width: 380px;
   margin: 0 auto;
 }
 
 .hub-diagram--mobile .hub-core {
-  top: 7.5%;
+  top: 5%;
 }
 
 @media (min-width: 860px) {
