@@ -465,6 +465,18 @@ section { position: relative; }
   overflow: hidden;
 }
 
+.intro__photo-corner {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--violet);
+  z-index: 2;
+}
+
+.intro__photo-corner--tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.intro__photo-corner--br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
 .intro__photo--empty::after {
   content: 'YOUR PHOTO HERE';
   position: absolute;
@@ -1271,13 +1283,128 @@ section { position: relative; }
   animation: ctaFloat 6s ease-in-out infinite;
 }
 
-.cta__mockup {
+.cta__mockup-flip {
+  position: relative;
   width: 100%;
   max-width: 440px;
-  height: auto;
+  aspect-ratio: 984 / 777;
+  perspective: 1800px;
+  cursor: pointer;
+}
+
+.cta__mockup-flip:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 8px;
+  border-radius: 16px;
+}
+
+.cta__mockup-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.cta__mockup-flip:hover .cta__mockup-flip-inner,
+.cta__mockup-flip.is-flipped .cta__mockup-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.cta__mockup-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cta__mockup-face--back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6% 8% 20%;
+}
+
+.cta__mockup {
+  width: 100%;
+  height: 100%;
+  display: block;
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
   -webkit-mask-image: linear-gradient(to bottom, black 62%, transparent 97%);
   mask-image: linear-gradient(to bottom, black 62%, transparent 97%);
+}
+
+.cta__specs {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(58, 46, 82, 0.92), rgba(11, 11, 13, 0.97));
+  border: 1px solid rgba(107, 79, 187, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(245, 244, 240, 0.04) inset,
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(107, 79, 187, 0.25);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cta__specs-eyebrow {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--violet);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(138, 138, 141, 0.25);
+}
+
+.cta__specs-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cta__specs-list > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.cta__specs-list dt {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--slate);
+  flex-shrink: 0;
+}
+
+.cta__specs-list dd {
+  margin: 0;
+  font-size: 12px;
+  color: var(--off-white);
+  text-align: right;
+}
+
+.cta__specs-status {
+  color: var(--magenta) !important;
+  font-weight: 700;
+}
+
+.cta__mockup-hint {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--slate);
+  opacity: 0.75;
 }
 
 @keyframes ctaFloat {
@@ -1293,11 +1420,12 @@ section { position: relative; }
 }
 
 @media (max-width: 600px) {
-  .cta__mockup { max-width: 320px; }
+  .cta__mockup-flip { max-width: 320px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .cta__mockup-wrap { animation: none; }
+  .cta__mockup-flip-inner { transition: none; }
 }
 
 .footer {

@@ -1,4 +1,5 @@
 import Reveal from './Reveal.jsx'
+import AnimatedNumber from './AnimatedNumber.jsx'
 
 export default function Intro() {
   return (
@@ -10,7 +11,9 @@ export default function Intro() {
         </Reveal>
 
         <div className="intro__grid">
-          <Reveal as="div" className="intro__photo">
+          <Reveal as="div" className="intro__photo intro__photo--framed">
+            <span className="intro__photo-corner intro__photo-corner--tl" />
+            <span className="intro__photo-corner intro__photo-corner--br" />
             <img src="/photos/ken-headshot.png" alt="Ken Curtina" />
           </Reveal>
 
@@ -55,15 +58,15 @@ export default function Intro() {
 
             <div className="intro__stats">
               <div>
-                <div className="intro__stat-num">7<span>+</span></div>
+                <div className="intro__stat-num"><AnimatedNumber value={7} suffix="+" /></div>
                 <div className="intro__stat-label">Years as a VA</div>
               </div>
               <div>
-                <div className="intro__stat-num">4<span>+</span></div>
+                <div className="intro__stat-num"><AnimatedNumber value={4} suffix="+" /></div>
                 <div className="intro__stat-label">Years Inbox Mgmt</div>
               </div>
               <div>
-                <div className="intro__stat-num">17</div>
+                <div className="intro__stat-num"><AnimatedNumber value={17} /></div>
                 <div className="intro__stat-label">Age I Started</div>
               </div>
             </div>

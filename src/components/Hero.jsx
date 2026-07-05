@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import FloatingParticles from './FloatingParticles.jsx'
+import useMagnetic from '../hooks/useMagnetic.js'
 
 export default function Hero() {
+  const magneticRef = useMagnetic()
+
   return (
     <section id="home" className="hero">
       <div className="glow-orb" style={{ width: 480, height: 480, top: -160, left: '8%', background: 'var(--violet)' }} />
@@ -28,7 +31,7 @@ export default function Hero() {
           </p>
 
           <div className="hero__ctas fade-up" style={{ animationDelay: '0.4s' }}>
-            <a href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+            <a ref={magneticRef} href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
               Book a Discovery Call Now
               <span className="btn__arrow">&#8599;</span>
             </a>
