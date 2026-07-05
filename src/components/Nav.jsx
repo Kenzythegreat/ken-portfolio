@@ -8,7 +8,7 @@ export default function Nav() {
           <a href="#tools">Tools I Used</a>
           <a href="#travel">Travel Tales</a>
         </nav>
-        <a href="#book" className="btn btn--primary">
+        <a href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
           Book a Call
           <span className="btn__arrow">&#8599;</span>
         </a>

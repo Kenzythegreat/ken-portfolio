@@ -9,7 +9,7 @@ export default function CTA() {
           actually theirs to protect
         </h2>
         <p className="cta__sub">let's talk. Book a discovery call and I'll show you what I'd fix first.</p>
-        <a href="#" className="btn btn--primary">
+        <a href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
           Book a Discovery Call Now
           <span className="btn__arrow">&#8599;</span>
         </a>
