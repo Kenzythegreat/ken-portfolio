@@ -1138,3 +1138,54 @@ section { position: relative; }
   font-size: 13px;
   color: var(--slate);
 }
+
+/* ---------- CUSTOM CURSOR ---------- */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-100px, -100px);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--magenta);
+  border-radius: 50%;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid var(--violet);
+  border-radius: 50%;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background 0.25s ease, opacity 0.3s ease;
+}
+
+.cursor-ring--active {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  background: rgba(107, 79, 187, 0.12);
+  border-color: var(--magenta);
+}
+
+.cursor-ring--down {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
