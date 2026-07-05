@@ -5,7 +5,7 @@ export default function Travel() {
     <section id="travel" className="strip">
       <div className="wrap">
         <div className="section-head">
-          <span className="section-head__num">06</span>
+          <span className="section-head__num">05</span>
           <h2 className="section-head__title">Travel Tales</h2>
         </div>
 

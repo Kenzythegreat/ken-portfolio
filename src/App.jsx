@@ -1,29 +1,38 @@
+import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
-import Hero from './components/Hero.jsx'
-import Intro from './components/Intro.jsx'
-import Matcha from './components/Matcha.jsx'
-import Skills from './components/Skills.jsx'
-import Outcomes from './components/Outcomes.jsx'
-import Experience from './components/Experience.jsx'
-import Tools from './components/Tools.jsx'
-import Travel from './components/Travel.jsx'
-import CTA from './components/CTA.jsx'
 import Footer from './components/Footer.jsx'
+import Home from './pages/Home.jsx'
+import ToolsPage from './pages/ToolsPage.jsx'
+
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1)
+      const el = document.getElementById(id)
+      if (el) {
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
+        return
+      }
+    }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
+
+  return null
+}
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollManager />
       <Nav />
-      <Hero />
-      <Intro />
-      <Matcha />
-      <Skills />
-      <Outcomes />
-      <Experience />
-      <Tools />
-      <Travel />
-      <CTA />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tools" element={<ToolsPage />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }

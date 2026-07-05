@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Hero() {
   return (
     <section id="home" className="hero">
@@ -28,7 +30,7 @@ export default function Hero() {
               Book a Discovery Call Now
               <span className="btn__arrow">&#8599;</span>
             </a>
-            <a href="#tools" className="btn btn--ghost">See My Tools</a>
+            <Link to="/tools" className="btn btn--ghost">See My Tools</Link>
           </div>
         </div>
 

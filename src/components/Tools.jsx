@@ -31,13 +31,8 @@ const CATEGORIES = [
 
 export default function Tools() {
   return (
-    <section id="tools" className="section-pad">
+    <section id="tools" className="section-pad" style={{ paddingTop: 0 }}>
       <div className="wrap">
-        <div className="section-head">
-          <span className="section-head__num">05</span>
-          <h2 className="section-head__title">Tools I'm Proficient In</h2>
-        </div>
-
         <div className="tools-cats">
           {CATEGORIES.map((c) => (
             <div key={c.label}>

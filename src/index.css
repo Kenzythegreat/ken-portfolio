@@ -243,6 +243,23 @@ section { position: relative; }
   .nav__links--left { display: none; }
 }
 
+/* ---------- PAGE HEADER (non-home pages) ---------- */
+.page-header {
+  padding: 96px 0 72px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.page-header__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-top: 16px;
+}
+
 /* ---------- HERO ---------- */
 .hero {
   padding: 96px 0 60px;
