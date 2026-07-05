@@ -7,37 +7,24 @@ export default function Reveal({ as: Tag = 'div', className = '', delay = 0, sty
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    let done = false
 
-    const reveal = () => {
-      if (done) return
-      done = true
-      setInView(true)
-      window.removeEventListener('scroll', onScroll)
-      observer.disconnect()
-    }
-
-    // Fallback for fast/instant scroll jumps (e.g. anchor navigation, "End"
-    // key, scrollbar drag) that can skip over the intersecting frame
-    // entirely, which IntersectionObserver alone would never report.
-    const onScroll = () => {
+    // Toggles both ways (not one-time): elements re-animate every time they
+    // enter the viewport, whether scrolling down into them or back up into
+    // them, and reset to hidden once they leave either edge. Driven off
+    // scroll/resize + getBoundingClientRect directly rather than
+    // IntersectionObserver, which some throttled/backgrounded tabs delay.
+    const check = () => {
       const rect = el.getBoundingClientRect()
-      if (rect.top < window.innerHeight * 0.9 || rect.bottom < 0) reveal()
+      setInView(rect.top < window.innerHeight - 80 && rect.bottom > 0)
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) reveal()
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
-    )
-    observer.observe(el)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
+    window.addEventListener('scroll', check, { passive: true })
+    window.addEventListener('resize', check)
+    check()
 
     return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', check)
+      window.removeEventListener('resize', check)
     }
   }, [])
 
