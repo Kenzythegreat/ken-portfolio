@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import FloatingParticles from './FloatingParticles.jsx'
 
 export default function Hero() {
   return (
     <section id="home" className="hero">
       <div className="glow-orb" style={{ width: 480, height: 480, top: -160, left: '8%', background: 'var(--violet)' }} />
       <div className="glow-orb" style={{ width: 420, height: 420, top: -40, right: '4%', background: 'var(--magenta)' }} />
+      <FloatingParticles />
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero__frame">
