@@ -162,6 +162,42 @@ section { position: relative; }
   opacity: 0.55;
   z-index: 0;
   pointer-events: none;
+  animation: orbPulse 10s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.55; }
+  50% { transform: scale(1.15) translate(2%, -3%); opacity: 0.38; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; margin-top: 18px; }
+  to { opacity: 1; margin-top: 0; }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+@keyframes tagBob {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -8px; }
+}
+
+.hero__tag {
+  animation: fadeUp 0.8s ease both, tagBob 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb,
+  .hero__tag,
+  .hub-line-pulse,
+  .hub-core {
+    animation: none !important;
+  }
+  .fade-up {
+    animation-duration: 0.01s !important;
+  }
 }
 
 /* ---------- NAV ---------- */
@@ -501,6 +537,164 @@ section { position: relative; }
 .skill-card__tags .pill {
   padding: 5px 12px;
   font-size: 10px;
+}
+
+/* ---------- SKILLS HUB ---------- */
+.hub-wrap {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hub-diagram {
+  position: relative;
+}
+
+.hub-diagram--desktop {
+  aspect-ratio: 160 / 100;
+  display: none;
+}
+
+.hub-diagram--mobile {
+  aspect-ratio: 100 / 240;
+  display: block;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.hub-diagram--mobile .hub-core {
+  top: 7.5%;
+}
+
+@media (min-width: 860px) {
+  .hub-diagram--desktop { display: block; }
+  .hub-diagram--mobile { display: none; }
+}
+
+.hub-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.hub-line-base {
+  fill: none;
+  stroke: rgba(138, 138, 141, 0.3);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.hub-line-pulse {
+  fill: none;
+  stroke: var(--magenta);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 10 90;
+  stroke-linecap: round;
+  animation-name: hubDash;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.9;
+}
+
+@keyframes hubDash {
+  to { stroke-dashoffset: -100; }
+}
+
+.hub-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 108px;
+  height: 108px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, var(--indigo), #150f1f);
+  border: 1px solid rgba(199, 201, 204, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  animation: hubGlow 6s ease-in-out infinite;
+}
+
+@keyframes hubGlow {
+  0%, 100% { box-shadow: 0 0 40px rgba(107, 79, 187, 0.35); }
+  50% { box-shadow: 0 0 64px rgba(179, 63, 161, 0.5); }
+}
+
+.hub-core__corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--silver);
+}
+
+.hub-core__corner--tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.hub-core__corner--tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.hub-core__corner--bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.hub-core__corner--br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+.hub-core__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--off-white);
+}
+
+.hub-core__name span { color: var(--magenta); }
+
+.hub-node {
+  position: absolute;
+  width: 172px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(138, 138, 141, 0.3);
+  background: rgba(245, 244, 240, 0.03);
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.hub-node__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--violet);
+  margin-bottom: 6px;
+}
+
+.hub-node__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.hub-node__tag {
+  font-size: 11px;
+  color: var(--slate);
+}
+
+.anchor-bottom { transform: translate(-50%, -100%); }
+.anchor-top { transform: translate(-50%, 0%); }
+.anchor-left { transform: translate(0, -50%); }
+.anchor-right { transform: translate(-100%, -50%); }
+.anchor-center { transform: translate(-50%, -50%); }
+
+.hub-diagram--mobile .hub-node {
+  width: min(78%, 220px);
+  background: rgba(11, 11, 13, 0.92);
+}
+
+@media (max-width: 500px) {
+  .hub-core { width: 84px; height: 84px; }
+  .hub-core__name { font-size: 17px; }
 }
 
 /* ---------- OUTCOMES ---------- */

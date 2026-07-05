@@ -6,23 +6,23 @@ export default function Hero() {
 
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero__frame">
-          <span className="hero__tag hero__tag--1 pill pill--accent">Inbox Manager</span>
-          <span className="hero__tag hero__tag--2 pill pill--accent">Cold Email Strategist</span>
-          <span className="hero__tag hero__tag--3 pill pill--accent">7 Years Experience</span>
+          <span className="hero__tag hero__tag--1 pill pill--accent" style={{ animationDelay: '0.5s, 1.3s', animationDuration: '0.8s, 5.4s' }}>Inbox Manager</span>
+          <span className="hero__tag hero__tag--2 pill pill--accent" style={{ animationDelay: '0.6s, 1.4s', animationDuration: '0.8s, 4.6s' }}>Cold Email Strategist</span>
+          <span className="hero__tag hero__tag--3 pill pill--accent" style={{ animationDelay: '0.7s, 1.5s', animationDuration: '0.8s, 5s' }}>7 Years Experience</span>
 
-          <p className="eyebrow hero__eyebrow" style={{ display: 'block', justifyContent: 'center' }}>Ken Curtina</p>
+          <p className="eyebrow hero__eyebrow fade-up" style={{ display: 'block', justifyContent: 'center', animationDelay: '0s' }}>Ken Curtina</p>
 
-          <h1 className="hero__headline">
+          <h1 className="hero__headline fade-up" style={{ animationDelay: '0.12s' }}>
             A Glimpse Into My Work
             <span className="script-accent">&amp; My Personal Life</span>
           </h1>
 
-          <p className="hero__lede">
+          <p className="hero__lede fade-up" style={{ animationDelay: '0.28s' }}>
             Cold Email Strategist, Inbox Manager, Social Media Manager, and
             Executive Support specialist — behind the scenes of growing businesses.
           </p>
 
-          <div className="hero__ctas">
+          <div className="hero__ctas fade-up" style={{ animationDelay: '0.4s' }}>
             <a href="https://calendly.com/mcquinlyc/one-on-one" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
               Book a Discovery Call Now
               <span className="btn__arrow">&#8599;</span>
