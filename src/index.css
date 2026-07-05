@@ -335,7 +335,7 @@ section { position: relative; }
   overflow: hidden;
 }
 
-.intro__photo::after {
+.intro__photo--empty::after {
   content: 'YOUR PHOTO HERE';
   position: absolute;
   inset: 0;
@@ -347,6 +347,16 @@ section { position: relative; }
   letter-spacing: 0.2em;
   color: rgba(245, 244, 240, 0.35);
   text-align: center;
+}
+
+.intro__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.45));
 }
 
 .intro__name {

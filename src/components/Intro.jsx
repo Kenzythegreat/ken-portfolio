@@ -8,7 +8,9 @@ export default function Intro() {
         </div>
 
         <div className="intro__grid">
-          <div className="intro__photo" />
+          <div className="intro__photo">
+            <img src="/photos/ken-headshot.png" alt="Ken Curtina" />
+          </div>
 
           <div>
             <h3 className="intro__name">
