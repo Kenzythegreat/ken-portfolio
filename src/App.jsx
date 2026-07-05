@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
 import Cursor from './components/Cursor.jsx'
+import ScrollProgress from './components/ScrollProgress.jsx'
 import Home from './pages/Home.jsx'
 import ToolsPage from './pages/ToolsPage.jsx'
 import ProofOfWorkPage from './pages/ProofOfWorkPage.jsx'
@@ -29,6 +30,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollManager />
+      <ScrollProgress />
       <Cursor />
       <Nav />
       <Routes>

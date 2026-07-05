@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 
 const OUTCOMES = [
@@ -24,6 +25,10 @@ const OUTCOMES = [
 ]
 
 export default function Outcomes() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggle = (i) => setOpenIndex((prev) => (prev === i ? null : i))
+
   return (
     <section id="outcomes" className="section-pad">
       <div className="wrap">
@@ -33,13 +38,40 @@ export default function Outcomes() {
         </Reveal>
 
         <div className="outcomes-grid">
-          {OUTCOMES.map((o, i) => (
-            <Reveal as="div" className="outcome-item" delay={i * 160} key={o.num}>
-              <span className="outcome-item__num">{o.num}</span>
-              <h3 className="outcome-item__title">{o.title}</h3>
-              <p className="outcome-item__desc">{o.desc}</p>
-            </Reveal>
-          ))}
+          {OUTCOMES.map((o, i) => {
+            const isOpen = openIndex === i
+            return (
+              <Reveal
+                as="div"
+                className={`outcome-item ${isOpen ? 'is-expanded' : ''}`}
+                delay={i * 160}
+                key={o.num}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isOpen}
+                onClick={() => toggle(i)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle(i)
+                  }
+                }}
+              >
+                <div className="outcome-item__head">
+                  <div>
+                    <span className="outcome-item__num">{o.num}</span>
+                    <h3 className="outcome-item__title">{o.title}</h3>
+                  </div>
+                  <span className="outcome-item__chevron" aria-hidden="true">⌄</span>
+                </div>
+                <div className="outcome-item__collapsible">
+                  <div className="outcome-item__collapsible-inner">
+                    <p className="outcome-item__desc">{o.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>
