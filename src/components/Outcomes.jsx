@@ -1,3 +1,5 @@
+import Reveal from './Reveal.jsx'
+
 const OUTCOMES = [
   {
     num: '01',
@@ -21,8 +23,6 @@ const OUTCOMES = [
   },
 ]
 
-import Reveal from './Reveal.jsx'
-
 export default function Outcomes() {
   return (
     <section id="outcomes" className="section-pad">
@@ -34,7 +34,7 @@ export default function Outcomes() {
 
         <div className="outcomes-grid">
           {OUTCOMES.map((o, i) => (
-            <Reveal as="div" className="outcome-item" delay={i * 90} key={o.num}>
+            <Reveal as="div" className="outcome-item" delay={i * 160} key={o.num}>
               <span className="outcome-item__num">{o.num}</span>
               <h3 className="outcome-item__title">{o.title}</h3>
               <p className="outcome-item__desc">{o.desc}</p>
