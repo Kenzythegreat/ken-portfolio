@@ -460,6 +460,104 @@ section { position: relative; }
   margin-top: 4px;
 }
 
+/* ---------- PROOF OF WORK ---------- */
+.pow {
+  padding: 56px 0;
+}
+
+.pow-track {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.pow-row {
+  display: flex;
+  width: max-content;
+  gap: 18px;
+  animation: powMarquee 34s linear infinite;
+}
+
+.pow-row:hover {
+  animation-play-state: paused;
+}
+
+@keyframes powMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.pow-item {
+  flex-shrink: 0;
+  height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(138, 138, 141, 0.25);
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pow-item:hover {
+  border-color: var(--violet);
+  transform: translateY(-3px);
+}
+
+.pow-item img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.pow-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(11, 11, 13, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: zoom-out;
+  animation: fadeUp 0.2s ease both;
+}
+
+.pow-lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+.pow-lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 244, 240, 0.3);
+  background: rgba(245, 244, 240, 0.06);
+  color: var(--off-white);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .pow-item { height: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pow-row { animation: none; overflow-x: auto; }
+}
+
 /* ---------- MATCHA ---------- */
 .matcha {
   padding: 90px 0;
