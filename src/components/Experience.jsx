@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 
 const COLUMNS = [
@@ -47,6 +48,10 @@ const COLUMNS = [
 ]
 
 export default function Experience() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggle = (i) => setOpenIndex((prev) => (prev === i ? null : i))
+
   return (
     <section id="experience" className="section-pad">
       <div className="wrap">
@@ -56,40 +61,65 @@ export default function Experience() {
         </Reveal>
 
         <div className="exp-grid">
-          {COLUMNS.map((c, i) => (
-            <Reveal as="div" className="exp-card" delay={i * 90} key={c.role}>
-              <h3 className="exp-card__role">{c.role}</h3>
-              <span className="exp-card__period">{c.period}</span>
-
-              {c.type === 'list' && (
-                <div className="exp-card__body">
-                  <p>{c.intro}</p>
-                  <ul className="exp-card__list">
-                    {c.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+          {COLUMNS.map((c, i) => {
+            const isOpen = openIndex === i
+            return (
+              <Reveal
+                as="div"
+                className={`exp-card ${isOpen ? 'is-expanded' : ''}`}
+                delay={i * 90}
+                key={c.role}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isOpen}
+                onClick={() => toggle(i)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggle(i)
+                  }
+                }}
+              >
+                <h3 className="exp-card__role">{c.role}</h3>
+                <div className="exp-card__head">
+                  <span className="exp-card__period">{c.period}</span>
+                  <span className="exp-card__chevron" aria-hidden="true">⌄</span>
                 </div>
-              )}
 
-              {c.type === 'text' && (
-                <div className="exp-card__body">
-                  <p>{c.text}</p>
-                </div>
-              )}
+                <div className="exp-card__collapsible">
+                  <div className="exp-card__collapsible-inner">
+                    {c.type === 'list' && (
+                      <div className="exp-card__body">
+                        <p>{c.intro}</p>
+                        <ul className="exp-card__list">
+                          {c.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-              {c.type === 'companies' && (
-                <div className="exp-card__companies">
-                  {c.companies.map((co) => (
-                    <div className={`exp-company ${co.current ? 'exp-company--current' : ''}`} key={co.name}>
-                      <span className="exp-company__name">{co.name}</span>
-                      <span className="exp-company__meta">{co.meta}</span>
-                    </div>
-                  ))}
+                    {c.type === 'text' && (
+                      <div className="exp-card__body">
+                        <p>{c.text}</p>
+                      </div>
+                    )}
+
+                    {c.type === 'companies' && (
+                      <div className="exp-card__companies">
+                        {c.companies.map((co) => (
+                          <div className={`exp-company ${co.current ? 'exp-company--current' : ''}`} key={co.name}>
+                            <span className="exp-company__name">{co.name}</span>
+                            <span className="exp-company__meta">{co.meta}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </Reveal>
-          ))}
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>
