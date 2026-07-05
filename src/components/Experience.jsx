@@ -1,30 +1,50 @@
-const ROLES = [
+import Reveal from './Reveal.jsx'
+
+const COLUMNS = [
   {
-    role: 'Private Client (VA)',
-    period: '2019–2022',
-    details: 'Persuasive article comments, blog copy/paste, clicking tasks, Facebook farming, WordPress posting for blogs/podcasts.',
+    role: 'Private Client',
+    period: '2019 – 2022',
+    type: 'list',
+    intro: 'I help them with:',
+    items: [
+      'Making persuasive comments for an Article',
+      'Copy/Paste details for his Blog',
+      'Clicking Tasks',
+      'Facebook Farming',
+      'WordPress Posting Blogs/Podcasts',
+    ],
   },
   {
     role: 'Lead Generation',
-    period: '2022 · Leadsology',
-    details: 'Messaged business executives/coaches, inviting them to webinars via LinkedIn.',
+    period: '2022',
+    type: 'text',
+    text: (
+      <>
+        In <strong>Leadsology</strong>, I message specific leads like Business
+        Executives/Coaches and I have to ping them a message regarding an
+        invite through our Webinars using LinkedIn.
+      </>
+    ),
   },
   {
-    role: 'Repetitive Tasks / Data Removal',
+    role: 'Repetitive Tasks',
     period: '2023',
-    details: 'Removed member info from data broker sites; submitted opt-out/deletion forms across people-search platforms.',
+    type: 'text',
+    text: 'Our core service is to help people delete their information from data brokers and other companies or services. This role goes through each member and cleans up their search results (deleting their data from any sites that expose their contact info), plus proactively works through a list of People Search Sites and submits deletion/opt-out forms to erase the member’s info.',
+  },
+  {
+    role: 'Inbox Manager',
+    period: 'Companies I worked with',
+    type: 'companies',
+    companies: [
+      { name: 'Vendisys', meta: 'USA — 1 year' },
+      { name: 'C17', meta: 'USA — 1 year, 5 months' },
+      { name: 'Systemized Revenue', meta: 'USA — 2 years, 4 months' },
+      { name: 'Visible Hand Company', meta: 'USA — 1 year — with SMM tasks' },
+      { name: 'Cymate', meta: 'USA — 9 months — now as Brand & Marketing Manager', current: true },
+    ],
   },
 ]
-
-const COMPANIES = [
-  { name: 'Vendisys', meta: 'USA — 1 year' },
-  { name: 'C17', meta: 'USA — 1 year, 5 months' },
-  { name: 'Systemized Revenue', meta: 'USA — 2 years, 4 months' },
-  { name: 'Visible Hand Company', meta: 'USA — 1 year, with SMM tasks' },
-  { name: 'Cymate', meta: 'USA — 9 months — Brand & Marketing Manager', current: true },
-]
-
-import Reveal from './Reveal.jsx'
 
 export default function Experience() {
   return (
@@ -35,39 +55,39 @@ export default function Experience() {
           <h2 className="section-head__title">Work Experience</h2>
         </Reveal>
 
-        <table className="exp-table">
-          <thead>
-            <tr>
-              <th>Role</th>
-              <th>Period</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ROLES.map((r, i) => (
-              <Reveal as="tr" delay={i * 80} key={r.role}>
-                <td>{r.role}</td>
-                <td>{r.period}</td>
-                <td>{r.details}</td>
-              </Reveal>
-            ))}
-          </tbody>
-        </table>
+        <div className="exp-grid">
+          {COLUMNS.map((c, i) => (
+            <Reveal as="div" className="exp-card" delay={i * 90} key={c.role}>
+              <h3 className="exp-card__role">{c.role}</h3>
+              <span className="exp-card__period">{c.period}</span>
 
-        <p className="eyebrow" style={{ marginBottom: 8 }}>Companies I've Worked With</p>
-        <div className="companies-list">
-          {COMPANIES.map((c, i) => (
-            <Reveal
-              as="div"
-              className={`company-row ${c.current ? 'company-row--current' : ''}`}
-              delay={i * 70}
-              key={c.name}
-            >
-              <div>
-                <div className="company-row__name">{c.name}</div>
-                <div className="company-row__meta">{c.meta}</div>
-              </div>
-              {c.current && <span className="pill company-row__badge">Current</span>}
+              {c.type === 'list' && (
+                <div className="exp-card__body">
+                  <p>{c.intro}</p>
+                  <ul className="exp-card__list">
+                    {c.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {c.type === 'text' && (
+                <div className="exp-card__body">
+                  <p>{c.text}</p>
+                </div>
+              )}
+
+              {c.type === 'companies' && (
+                <div className="exp-card__companies">
+                  {c.companies.map((co) => (
+                    <div className={`exp-company ${co.current ? 'exp-company--current' : ''}`} key={co.name}>
+                      <span className="exp-company__name">{co.name}</span>
+                      <span className="exp-company__meta">{co.meta}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </Reveal>
           ))}
         </div>
