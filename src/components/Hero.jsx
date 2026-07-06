@@ -27,7 +27,7 @@ export default function Hero() {
 
           <p className="hero__lede fade-up" style={{ animationDelay: '0.28s' }}>
             Cold Email Strategist, Inbox Manager, Social Media Manager, and
-            Executive Support specialist — behind the scenes of growing businesses.
+            Executive Support specialist, behind the scenes of growing businesses.
           </p>
 
           <div className="hero__ctas fade-up" style={{ animationDelay: '0.4s' }}>
@@ -53,13 +53,13 @@ export default function Hero() {
           <p>
             I didn't start with a network or a big break. I started with a laptop,
             a willingness to learn fast, and enough consistency to turn "figuring
-            it out" into an actual skill set. That's still how I work today — I get
-            into the system, understand what's actually broken, and make it run
-            better than it did before I showed up.
+            it out" into an actual skill set. That's still how I work today: I get
+            into the system, figure out what's actually broken, and leave it
+            running better than I found it.
           </p>
           <p>
-            On this site, you'll find the tools I use, the results I've helped
-            produce, and a bit of my life outside of work too — because the
+            Scroll down and you'll find the tools I actually use, the results I've
+            helped produce, and a bit of my life outside of work too, because the
             person managing your inbox is also the person planning their next
             trip through Asia with a matcha in hand.
           </p>
