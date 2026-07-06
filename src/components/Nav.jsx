@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom'
+import useMagnetic from '../hooks/useMagnetic.js'
 
 export default function Nav() {
+  const magneticRef = useMagnetic(0.25, 8)
+
   return (
     <header className="nav">
       <div className="nav__inner">
-        <Link to="/" className="nav__logo">Ken<span>.</span></Link>
+        <Link ref={magneticRef} to="/" className="nav__logo">Ken<span>.</span></Link>
         <nav className="nav__links nav__links--left">
           <Link to="/">Home</Link>
           <Link to="/tools">Tools I Used</Link>
           <Link to="/proof-of-work">Proof of Work</Link>
+          <Link to="/travel-tales">Travel Tales</Link>
         </nav>
         <div className="nav__right">
           <a

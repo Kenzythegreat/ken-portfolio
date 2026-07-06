@@ -7,6 +7,7 @@ import ScrollProgress from './components/ScrollProgress.jsx'
 import Home from './pages/Home.jsx'
 import ToolsPage from './pages/ToolsPage.jsx'
 import ProofOfWorkPage from './pages/ProofOfWorkPage.jsx'
+import TravelTalesPage from './pages/TravelTalesPage.jsx'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/proof-of-work" element={<ProofOfWorkPage />} />
+        <Route path="/travel-tales" element={<TravelTalesPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

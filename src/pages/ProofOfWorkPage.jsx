@@ -3,7 +3,7 @@ import ProofOfWork from '../components/ProofOfWork.jsx'
 
 export default function ProofOfWorkPage() {
   useEffect(() => {
-    document.title = 'Proof of Work — Ken Curtina'
+    document.title = 'Proof of Work · Ken Curtina'
   }, [])
 
   return (
@@ -15,7 +15,7 @@ export default function ProofOfWorkPage() {
           <h1 className="page-header__title fade-up" style={{ animationDelay: '0.1s' }}>Proof of Work</h1>
           <p className="hero__lede fade-up" style={{ margin: '18px auto 0', animationDelay: '0.2s' }}>
             Real campaign graphics, client testimonials, and social content
-            I've shipped — click any tile for a closer look.
+            I've shipped, click any tile for a closer look.
           </p>
         </div>
       </section>

@@ -9,7 +9,7 @@ import CTA from '../components/CTA.jsx'
 
 export default function Home() {
   useEffect(() => {
-    document.title = 'Ken Curtina — Portfolio'
+    document.title = 'Ken Curtina · Portfolio'
   }, [])
 
   return (
