@@ -34,6 +34,13 @@ const LABELED_IMAGES = LABELED_FILES.map(({ name, label }) => ({
   label,
 }))
 
+const TESTIMONIAL_FILES = ['testimonial 1', 'testimonial 2', 'testimonial 3', 'Testimonial']
+
+const TESTIMONIAL_IMAGES = TESTIMONIAL_FILES.map((name) => ({
+  thumb: `/photos/thumbs/${encodeURIComponent(name)}.jpg`,
+  full: `/photos/${encodeURIComponent(name)}.png`,
+}))
+
 export default function ProofOfWork() {
   const [active, setActive] = useState(null)
 
@@ -76,6 +83,24 @@ export default function ProofOfWork() {
             >
               <img src={img.thumb} alt="" loading="lazy" />
               <span className="pow-item__label">{img.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>Feedback From Clients</p>
+
+      <div className="pow-track">
+        <div className="pow-row">
+          {[...TESTIMONIAL_IMAGES, ...TESTIMONIAL_IMAGES].map((img, i) => (
+            <button
+              type="button"
+              className="pow-item"
+              key={i}
+              onClick={() => setActive(img.full)}
+              aria-label="Open testimonial"
+            >
+              <img src={img.thumb} alt="" loading="lazy" />
             </button>
           ))}
         </div>
