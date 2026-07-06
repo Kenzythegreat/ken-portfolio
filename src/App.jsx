@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
 import Cursor from './components/Cursor.jsx'
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/travel-tales" element={<TravelTalesPage />} />
       </Routes>
       <Footer />
+      <Analytics />
     </BrowserRouter>
   )
 }
