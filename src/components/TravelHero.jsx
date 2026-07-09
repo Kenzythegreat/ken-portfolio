@@ -111,11 +111,18 @@ export default function TravelHero() {
         style={{ backgroundImage: "url('/photos/travel/bali-1.jpg')" }}
       >
         <div className="travel-hero-overlay">
-          <p className="eyebrow" style={{ justifyContent: 'center' }}>Ken Curtina</p>
-          <h1 className="page-header__title">Travel Tales</h1>
-          <p className="hero__lede" style={{ margin: '18px auto 0' }}>
-            A few stamps in the passport along the way, click any photo for a closer look.
-          </p>
+          <div className="travel-hero-card fade-up">
+            <p className="eyebrow" style={{ justifyContent: 'center' }}>Ken Curtina</p>
+            <h1 className="travel-hero-title">Travel Tales</h1>
+            <p className="hero__lede" style={{ margin: '14px auto 0' }}>
+              A few stamps in the passport along the way, click any photo for a closer look.
+            </p>
+            <div className="travel-hero-stats">
+              <span className="pill pill--accent">10 Trips</span>
+              <span className="pill pill--accent">8 Countries</span>
+              <span className="pill pill--accent">Since 2023</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
