@@ -1715,6 +1715,16 @@ section { position: relative; }
   .travel-hero-image { transition: none; }
 }
 
+.travel-gallery-wrap {
+  position: relative;
+  width: 100%;
+  height: 560px;
+}
+
+@media (max-width: 700px) {
+  .travel-gallery-wrap { height: 420px; }
+}
+
 /* ---------- CUSTOM CURSOR ---------- */
 html.has-custom-cursor,
 html.has-custom-cursor * {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import CircularGallery from './CircularGallery.jsx'
 
 const DESTINATIONS = [
   { slug: 'bali-1', title: 'Bali Part 1', flag: '🇮🇩', date: 'Aug 2024' },
@@ -13,47 +13,27 @@ const DESTINATIONS = [
   { slug: 'vietnam', title: 'Vietnam', flag: '🇻🇳', date: 'Sep 2025' },
 ]
 
+const GALLERY_ITEMS = DESTINATIONS.map((d) => ({
+  image: `/photos/travel/${d.slug}.jpg`,
+  text: `${d.flag}  ${d.title}`,
+}))
+
+const isNarrowViewport = typeof window !== 'undefined' && window.innerWidth < 700
+
 export default function TravelTales() {
-  const [active, setActive] = useState(null)
-
-  useEffect(() => {
-    if (!active) return
-    const onKey = (e) => { if (e.key === 'Escape') setActive(null) }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [active])
-
   return (
     <section className="pow">
-      <div className="pow-track">
-        <div className="pow-row">
-          {[...DESTINATIONS, ...DESTINATIONS].map((d, i) => (
-            <button
-              type="button"
-              className="travel-card"
-              key={`${d.slug}-${i}`}
-              onClick={() => setActive(`/photos/travel/${d.slug}.jpg`)}
-              aria-label={`Open ${d.title} photo`}
-            >
-              <img src={`/photos/travel/${d.slug}.jpg`} alt={d.title} loading="lazy" />
-              <span className="travel-card__caption">
-                <span className="travel-card__flag" aria-hidden="true">{d.flag}</span>
-                <span>
-                  <span className="travel-card__title">{d.title}</span>
-                  <span className="travel-card__date">{d.date}</span>
-                </span>
-              </span>
-            </button>
-          ))}
-        </div>
+      <div className="travel-gallery-wrap">
+        <CircularGallery
+          items={GALLERY_ITEMS}
+          bend={isNarrowViewport ? 1.2 : 3}
+          textColor="#F5F4F0"
+          borderRadius={0.05}
+          font="bold 24px Space Grotesk"
+          scrollSpeed={2}
+          scrollEase={0.08}
+        />
       </div>
-
-      {active && (
-        <div className="pow-lightbox" onClick={() => setActive(null)}>
-          <button type="button" className="pow-lightbox__close" onClick={() => setActive(null)} aria-label="Close preview">&times;</button>
-          <img src={active} alt="" onClick={(e) => e.stopPropagation()} />
-        </div>
-      )}
     </section>
   )
 }
