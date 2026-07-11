@@ -434,14 +434,9 @@ section { position: relative; }
 .hero__body {
   max-width: 720px;
   margin: 64px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
   color: var(--off-white);
   font-size: 16.5px;
 }
-
-.hero__body p strong { color: var(--silver); font-weight: 700; }
 
 /* ---------- INTRO ---------- */
 .intro {

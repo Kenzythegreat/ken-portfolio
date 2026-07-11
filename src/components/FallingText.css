@@ -1,0 +1,28 @@
+.falling-text-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.falling-text-target {
+  display: block;
+  width: 100%;
+}
+
+.falling-text-target .word {
+  display: inline-block;
+  margin: 0 2px;
+  user-select: none;
+}
+
+.falling-text-target .highlighted {
+  color: var(--violet);
+  font-weight: 700;
+}
+
+.falling-text-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

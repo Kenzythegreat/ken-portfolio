@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
 import FluidGlass from './FluidGlass.jsx'
+import FallingText from './FallingText.jsx'
 import useMagnetic from '../hooks/useMagnetic.js'
+
+const HERO_BODY_TEXT = `For the past several years, I've worked behind the scenes of growing businesses. I write and manage outbound campaigns that get actual replies, not just opens. I run inboxes so founders never miss a real conversation buried under noise. I build social content that keeps a brand visible and consistent instead of going quiet for three weeks at a time. And I handle the operational details that let business owners stay focused on the bigger picture instead of drowning in their own to-do list. I didn't start with a network or a big break. I started with a laptop, a willingness to learn fast, and enough consistency to turn "figuring it out" into an actual skill set. That's still how I work today: I get into the system, figure out what's actually broken, and leave it running better than I found it. Scroll down and you'll find the tools I actually use, the results I've helped produce, and a bit of my life outside of work too, because the person managing your inbox is also the person planning their next trip through Asia with a matcha in hand. If you're looking for someone who treats your business like it's actually theirs to protect, let's talk.`
+
+const HERO_BODY_HIGHLIGHTS = ['founders', 'consistency', 'protect', "let's"]
 
 export default function Hero() {
   const magneticRef = useMagnetic()
@@ -41,33 +46,13 @@ export default function Hero() {
         </div>
 
         <div className="hero__body">
-          <p>
-            For the past several years, I've worked behind the scenes of growing
-            businesses. I write and manage outbound campaigns that get actual
-            replies, not just opens. I run inboxes so founders never miss a real
-            conversation buried under noise. I build social content that keeps a
-            brand visible and consistent instead of going quiet for three weeks at
-            a time. And I handle the operational details that let business owners
-            stay focused on the bigger picture instead of drowning in their own
-            to-do list.
-          </p>
-          <p>
-            I didn't start with a network or a big break. I started with a laptop,
-            a willingness to learn fast, and enough consistency to turn "figuring
-            it out" into an actual skill set. That's still how I work today: I get
-            into the system, figure out what's actually broken, and leave it
-            running better than I found it.
-          </p>
-          <p>
-            Scroll down and you'll find the tools I actually use, the results I've
-            helped produce, and a bit of my life outside of work too, because the
-            person managing your inbox is also the person planning their next
-            trip through Asia with a matcha in hand.
-          </p>
-          <p>
-            <strong>If you're looking for someone who treats your business like
-            it's actually theirs to protect, let's talk.</strong>
-          </p>
+          <FallingText
+            text={HERO_BODY_TEXT}
+            highlightWords={HERO_BODY_HIGHLIGHTS}
+            fontSize="17px"
+            gravity={0.9}
+            mouseConstraintStiffness={0.6}
+          />
         </div>
       </div>
     </section>
