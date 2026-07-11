@@ -338,30 +338,11 @@ section { position: relative; }
   overflow: hidden;
 }
 
-.floating-particles {
+.hero-fluid-glass {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  pointer-events: none;
   z-index: 0;
-}
-
-.floating-dot {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  box-shadow: 0 0 14px 2px currentColor;
-  animation: dotBob 7s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes dotBob {
-  0%, 100% { margin-top: 0; }
-  50% { margin-top: -16px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .floating-dot { animation: none; }
+  opacity: 0.4;
 }
 
 .hero__frame {
