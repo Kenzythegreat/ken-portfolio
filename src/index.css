@@ -947,15 +947,18 @@ section { position: relative; }
 
 .hub-core__name span { color: var(--magenta); }
 
-.hub-node {
+.hub-node-pos {
   position: absolute;
   width: 172px;
+  z-index: 2;
+}
+
+.hub-node {
   padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid rgba(138, 138, 141, 0.3);
   background: rgba(245, 244, 240, 0.03);
   backdrop-filter: blur(6px);
-  z-index: 2;
 }
 
 .hub-node__num {
@@ -986,8 +989,11 @@ section { position: relative; }
 .anchor-right { transform: translate(-100%, -50%); }
 .anchor-center { transform: translate(-50%, -50%); }
 
-.hub-diagram--mobile .hub-node {
+.hub-diagram--mobile .hub-node-pos {
   width: min(78%, 220px);
+}
+
+.hub-diagram--mobile .hub-node {
   background: rgba(11, 11, 13, 0.92);
 }
 

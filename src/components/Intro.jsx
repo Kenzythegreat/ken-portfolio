@@ -1,5 +1,7 @@
 import Reveal from './Reveal.jsx'
 import AnimatedNumber from './AnimatedNumber.jsx'
+import BorderGlow from './BorderGlow.jsx'
+import { GLOW_COLOR, GLOW_COLORS } from '../lib/borderGlowTheme.js'
 
 export default function Intro() {
   return (
@@ -11,11 +13,21 @@ export default function Intro() {
         </Reveal>
 
         <div className="intro__grid">
-          <Reveal as="div" className="intro__photo intro__photo--framed">
-            <span className="intro__photo-corner intro__photo-corner--tl" />
-            <span className="intro__photo-corner intro__photo-corner--br" />
-            <img src="/photos/ken-headshot.png" alt="Ken Curtina" />
-          </Reveal>
+          <BorderGlow
+            className="glow-wrap"
+            borderRadius={20}
+            glowRadius={36}
+            glowColor={GLOW_COLOR}
+            colors={GLOW_COLORS}
+            backgroundColor="#0B0B0D"
+            edgeSensitivity={35}
+          >
+            <Reveal as="div" className="intro__photo intro__photo--framed">
+              <span className="intro__photo-corner intro__photo-corner--tl" />
+              <span className="intro__photo-corner intro__photo-corner--br" />
+              <img src="/photos/ken-headshot.png" alt="Ken Curtina" />
+            </Reveal>
+          </BorderGlow>
 
           <Reveal as="div" delay={120}>
             <h3 className="intro__name">

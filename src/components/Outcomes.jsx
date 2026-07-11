@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
+import BorderGlow from './BorderGlow.jsx'
+import { GLOW_COLOR, GLOW_COLORS } from '../lib/borderGlowTheme.js'
 
 const OUTCOMES = [
   {
@@ -41,35 +43,45 @@ export default function Outcomes() {
           {OUTCOMES.map((o, i) => {
             const isOpen = openIndex === i
             return (
-              <Reveal
-                as="div"
-                className={`outcome-item ${isOpen ? 'is-expanded' : ''}`}
-                delay={i * 160}
+              <BorderGlow
                 key={o.num}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                onClick={() => toggle(i)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    toggle(i)
-                  }
-                }}
+                className="glow-wrap"
+                borderRadius={0}
+                glowRadius={16}
+                glowColor={GLOW_COLOR}
+                colors={GLOW_COLORS}
+                backgroundColor="#0B0B0D"
+                edgeSensitivity={45}
               >
-                <div className="outcome-item__head">
-                  <div>
-                    <span className="outcome-item__num">{o.num}</span>
-                    <h3 className="outcome-item__title">{o.title}</h3>
+                <Reveal
+                  as="div"
+                  className={`outcome-item ${isOpen ? 'is-expanded' : ''}`}
+                  delay={i * 160}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      toggle(i)
+                    }
+                  }}
+                >
+                  <div className="outcome-item__head">
+                    <div>
+                      <span className="outcome-item__num">{o.num}</span>
+                      <h3 className="outcome-item__title">{o.title}</h3>
+                    </div>
+                    <span className="outcome-item__chevron" aria-hidden="true">⌄</span>
                   </div>
-                  <span className="outcome-item__chevron" aria-hidden="true">⌄</span>
-                </div>
-                <div className="outcome-item__collapsible">
-                  <div className="outcome-item__collapsible-inner">
-                    <p className="outcome-item__desc">{o.desc}</p>
+                  <div className="outcome-item__collapsible">
+                    <div className="outcome-item__collapsible-inner">
+                      <p className="outcome-item__desc">{o.desc}</p>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
+                </Reveal>
+              </BorderGlow>
             )
           })}
         </div>

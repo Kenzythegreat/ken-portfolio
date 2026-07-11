@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
+import BorderGlow from './BorderGlow.jsx'
+import { GLOW_COLOR, GLOW_COLORS } from '../lib/borderGlowTheme.js'
 
 const COLUMNS = [
   {
@@ -64,60 +66,70 @@ export default function Experience() {
           {COLUMNS.map((c, i) => {
             const isOpen = openIndex === i
             return (
-              <Reveal
-                as="div"
-                className={`exp-card ${isOpen ? 'is-expanded' : ''}`}
-                delay={i * 90}
+              <BorderGlow
                 key={c.role}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                onClick={() => toggle(i)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    toggle(i)
-                  }
-                }}
+                className="glow-wrap"
+                borderRadius={14}
+                glowRadius={24}
+                glowColor={GLOW_COLOR}
+                colors={GLOW_COLORS}
+                backgroundColor="#0B0B0D"
+                edgeSensitivity={40}
               >
-                <h3 className="exp-card__role">{c.role}</h3>
-                <div className="exp-card__head">
-                  <span className="exp-card__period">{c.period}</span>
-                  <span className="exp-card__chevron" aria-hidden="true">⌄</span>
-                </div>
-
-                <div className="exp-card__collapsible">
-                  <div className="exp-card__collapsible-inner">
-                    {c.type === 'list' && (
-                      <div className="exp-card__body">
-                        <p>{c.intro}</p>
-                        <ul className="exp-card__list">
-                          {c.items.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {c.type === 'text' && (
-                      <div className="exp-card__body">
-                        <p>{c.text}</p>
-                      </div>
-                    )}
-
-                    {c.type === 'companies' && (
-                      <div className="exp-card__companies">
-                        {c.companies.map((co) => (
-                          <div className={`exp-company ${co.current ? 'exp-company--current' : ''}`} key={co.name}>
-                            <span className="exp-company__name">{co.name}</span>
-                            <span className="exp-company__meta">{co.meta}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                <Reveal
+                  as="div"
+                  className={`exp-card ${isOpen ? 'is-expanded' : ''}`}
+                  delay={i * 90}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      toggle(i)
+                    }
+                  }}
+                >
+                  <h3 className="exp-card__role">{c.role}</h3>
+                  <div className="exp-card__head">
+                    <span className="exp-card__period">{c.period}</span>
+                    <span className="exp-card__chevron" aria-hidden="true">⌄</span>
                   </div>
-                </div>
-              </Reveal>
+
+                  <div className="exp-card__collapsible">
+                    <div className="exp-card__collapsible-inner">
+                      {c.type === 'list' && (
+                        <div className="exp-card__body">
+                          <p>{c.intro}</p>
+                          <ul className="exp-card__list">
+                            {c.items.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {c.type === 'text' && (
+                        <div className="exp-card__body">
+                          <p>{c.text}</p>
+                        </div>
+                      )}
+
+                      {c.type === 'companies' && (
+                        <div className="exp-card__companies">
+                          {c.companies.map((co) => (
+                            <div className={`exp-company ${co.current ? 'exp-company--current' : ''}`} key={co.name}>
+                              <span className="exp-company__name">{co.name}</span>
+                              <span className="exp-company__meta">{co.meta}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              </BorderGlow>
             )
           })}
         </div>

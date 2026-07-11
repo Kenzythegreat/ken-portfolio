@@ -1,3 +1,6 @@
+import BorderGlow from './BorderGlow.jsx'
+import { GLOW_COLOR, GLOW_COLORS } from '../lib/borderGlowTheme.js'
+
 const SKILLS = [
   { num: '01', title: 'Inbox Management', tag: 'Smartlead · Front' },
   { num: '02', title: 'Social Media Management', tag: 'Canva · Scheduling' },
@@ -83,10 +86,22 @@ function Nodes({ positions }) {
   return SKILLS.map((s, i) => {
     const [left, top, anchor] = positions[i]
     return (
-      <div className={`hub-node ${anchor}`} style={{ left, top }} key={s.num}>
-        <span className="hub-node__num">{s.num}</span>
-        <h3 className="hub-node__title">{s.title}</h3>
-        <span className="hub-node__tag">{s.tag}</span>
+      <div className={`hub-node-pos ${anchor}`} style={{ left, top }} key={s.num}>
+        <BorderGlow
+          className="glow-wrap"
+          borderRadius={14}
+          glowRadius={20}
+          glowColor={GLOW_COLOR}
+          colors={GLOW_COLORS}
+          backgroundColor="#0B0B0D"
+          edgeSensitivity={40}
+        >
+          <div className="hub-node">
+            <span className="hub-node__num">{s.num}</span>
+            <h3 className="hub-node__title">{s.title}</h3>
+            <span className="hub-node__tag">{s.tag}</span>
+          </div>
+        </BorderGlow>
       </div>
     )
   })
