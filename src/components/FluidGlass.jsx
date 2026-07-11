@@ -13,7 +13,33 @@ import {
 } from '@react-three/drei'
 import { easing } from 'maath'
 
-export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {} }) {
+// Bypasses R3F's built-in canvas-scoped pointer tracking (which only sees
+// pointer events landing directly on the canvas) in favor of listening on a
+// larger host element supplied by the caller — the DOM text/tags/buttons
+// stacked on top of the canvas would otherwise "steal" hover from it,
+// making the lens only ever follow the pointer in the gaps between them.
+function useExternalPointer(eventSource) {
+  const pointerRef = useRef({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const target = eventSource
+    if (!target) return
+
+    const onMove = (e) => {
+      const rect = target.getBoundingClientRect()
+      if (rect.width === 0 || rect.height === 0) return
+      pointerRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1
+      pointerRef.current.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
+    }
+
+    target.addEventListener('pointermove', onMove, { passive: true })
+    return () => target.removeEventListener('pointermove', onMove)
+  }, [eventSource])
+
+  return pointerRef
+}
+
+export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {}, eventSource }) {
   const Wrapper = mode === 'bar' ? Bar : mode === 'cube' ? Cube : Lens
 
   const rawOverrides = mode === 'bar' ? barProps : mode === 'cube' ? cubeProps : lensProps
@@ -27,11 +53,13 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
     ...modeProps
   } = rawOverrides
 
+  const externalPointerRef = useExternalPointer(eventSource)
+
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }} gl={{ alpha: true }}>
       <ScrollControls damping={0.2} pages={3} distance={0.4}>
         {mode === 'bar' && <NavItems items={navItems} />}
-        <Wrapper modeProps={modeProps}>
+        <Wrapper modeProps={modeProps} externalPointerRef={externalPointerRef}>
           <Scroll>
             <Typography />
           </Scroll>
@@ -50,6 +78,7 @@ const ModeWrapper = memo(function ModeWrapper({
   lockToBottom = false,
   followPointer = true,
   modeProps = {},
+  externalPointerRef,
   ...props
 }) {
   const ref = useRef()
@@ -68,9 +97,10 @@ const ModeWrapper = memo(function ModeWrapper({
   useFrame((state, delta) => {
     const { gl, viewport, pointer, camera } = state
     const v = viewport.getCurrentViewport(camera, [0, 0, 15])
+    const p = externalPointerRef?.current ?? pointer
 
-    const destX = followPointer ? (pointer.x * v.width) / 2 : 0
-    const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0
+    const destX = followPointer ? (p.x * v.width) / 2 : 0
+    const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (p.y * v.height) / 2 : 0
     easing.damp3(ref.current.position, [destX, destY, 15], 0.32, delta)
 
     if (modeProps.scale == null) {

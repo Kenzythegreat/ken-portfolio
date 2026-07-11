@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FluidGlass from './FluidGlass.jsx'
 import FallingText from './FallingText.jsx'
@@ -9,16 +10,20 @@ const HERO_BODY_HIGHLIGHTS = ['founders', 'consistency', 'protect', "let's"]
 
 export default function Hero() {
   const magneticRef = useMagnetic()
+  const [frameEl, setFrameEl] = useState(null)
 
   return (
     <section id="home" className="hero">
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="hero__frame">
+        <div className="hero__frame" ref={setFrameEl}>
           <div className="hero-fluid-glass">
-            <FluidGlass
-              mode="lens"
-              lensProps={{ scale: 0.25, ior: 1.15, thickness: 5, chromaticAberration: 0.1, anisotropy: 0.01 }}
-            />
+            {frameEl && (
+              <FluidGlass
+                mode="lens"
+                eventSource={frameEl}
+                lensProps={{ scale: 0.25, ior: 1.15, thickness: 5, chromaticAberration: 0.1, anisotropy: 0.01 }}
+              />
+            )}
           </div>
 
           <span className="hero__tag hero__tag--1 pill pill--accent" style={{ animationDelay: '0.5s, 1.3s', animationDuration: '0.8s, 5.4s' }}>Inbox Manager</span>
