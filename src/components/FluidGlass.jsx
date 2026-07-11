@@ -5,8 +5,6 @@ import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber'
 import {
   useFBO,
   useGLTF,
-  useScroll,
-  Image,
   Scroll,
   Preload,
   ScrollControls,
@@ -36,7 +34,6 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
         <Wrapper modeProps={modeProps}>
           <Scroll>
             <Typography />
-            <Images />
           </Scroll>
           <Scroll html />
           <Preload />
@@ -74,7 +71,7 @@ const ModeWrapper = memo(function ModeWrapper({
 
     const destX = followPointer ? (pointer.x * v.width) / 2 : 0
     const destY = lockToBottom ? -v.height / 2 + 0.2 : followPointer ? (pointer.y * v.height) / 2 : 0
-    easing.damp3(ref.current.position, [destX, destY, 15], 0.15, delta)
+    easing.damp3(ref.current.position, [destX, destY, 15], 0.32, delta)
 
     if (modeProps.scale == null) {
       const maxWorld = v.width * 0.9
@@ -214,31 +211,18 @@ function NavItems({ items }) {
   )
 }
 
-function Images() {
-  const group = useRef()
-  const data = useScroll()
-  const { height } = useThree((s) => s.viewport)
-
-  useFrame(() => {
-    group.current.children[0].material.zoom = 1 + data.range(0, 1 / 3) / 3
-    group.current.children[1].material.zoom = 1 + data.range(0, 1 / 3) / 3
-    group.current.children[2].material.zoom = 1 + data.range(1.15 / 3, 1 / 3) / 2
-  })
-
-  return (
-    <group ref={group}>
-      <Image position={[-2, 0, 0]} scale={[3, height / 1.1, 1]} url="/photos/ken-headshot.png" />
-      <Image position={[2, 0, 3]} scale={3} url="/photos/travel/bali-1.jpg" />
-      <Image position={[-2.05, -height, 6]} scale={[1, 3, 1]} url="/photos/travel/hongkong-1.jpg" />
-    </group>
-  )
-}
-
 function Typography() {
+  const camera = useThree((s) => s.camera)
+  const viewport = useThree((s) => s.viewport)
+  // Compute the viewport size at this text's actual z-depth (12), not the
+  // default z=0 reference plane — otherwise, on narrow/tall aspect ratios,
+  // the width/height used for sizing don't match what's actually visible
+  // that close to the camera, and the text overflows past the frame.
+  const v = viewport.getCurrentViewport(camera, [0, 0, 12])
   const DEVICE = {
-    mobile: { fontSize: 0.2 },
-    tablet: { fontSize: 0.4 },
-    desktop: { fontSize: 0.5 }
+    mobile: { fontSize: 0.12 },
+    tablet: { fontSize: 0.26 },
+    desktop: { fontSize: 0.36 }
   }
   const getDevice = () => {
     const w = window.innerWidth
@@ -257,9 +241,12 @@ function Typography() {
 
   return (
     <Text
-      position={[0, 0, 12]}
+      position={[0, v.height * 0.11, 12]}
       fontSize={fontSize}
-      letterSpacing={-0.05}
+      maxWidth={v.width * 0.94}
+      textAlign="center"
+      lineHeight={1.15}
+      letterSpacing={-0.03}
       outlineWidth={0}
       outlineBlur="20%"
       outlineColor="#000"
@@ -268,7 +255,7 @@ function Typography() {
       anchorX="center"
       anchorY="middle"
     >
-      KEN CURTINA
+      {'A GLIMPSE INTO\nMY WORK'}
     </Text>
   )
 }

@@ -7,21 +7,19 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero">
-      <div className="hero-fluid-glass">
-        <FluidGlass
-          mode="lens"
-          lensProps={{ scale: 0.25, ior: 1.15, thickness: 5, chromaticAberration: 0.1, anisotropy: 0.01 }}
-        />
-      </div>
-
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className="hero__frame">
+          <div className="hero-fluid-glass">
+            <FluidGlass
+              mode="lens"
+              lensProps={{ scale: 0.25, ior: 1.15, thickness: 5, chromaticAberration: 0.1, anisotropy: 0.01 }}
+            />
+          </div>
+
           <span className="hero__tag hero__tag--1 pill pill--accent" style={{ animationDelay: '0.5s, 1.3s', animationDuration: '0.8s, 5.4s' }}>Inbox Manager</span>
           <span className="hero__tag hero__tag--2 pill pill--accent" style={{ animationDelay: '0.6s, 1.4s', animationDuration: '0.8s, 4.6s' }}>Cold Email Strategist</span>
           <span className="hero__tag hero__tag--3 pill pill--accent" style={{ animationDelay: '0.7s, 1.5s', animationDuration: '0.8s, 5.2s' }}>Social Media Management</span>
           <span className="hero__tag hero__tag--4 pill pill--accent" style={{ animationDelay: '0.8s, 1.6s', animationDuration: '0.8s, 5s' }}>7 Years Experience</span>
-
-          <p className="eyebrow hero__eyebrow fade-up" style={{ display: 'block', justifyContent: 'center', animationDelay: '0s' }}>Ken Curtina</p>
 
           <h1 className="hero__headline fade-up" style={{ animationDelay: '0.12s' }}>
             A Glimpse Into My Work
