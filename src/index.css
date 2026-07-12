@@ -761,6 +761,13 @@ section { position: relative; }
   padding: 90px 0;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.matcha-dotgrid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .matcha__card {

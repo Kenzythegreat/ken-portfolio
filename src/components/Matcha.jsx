@@ -1,9 +1,22 @@
 import Reveal from './Reveal.jsx'
+import DotGrid from './DotGrid.jsx'
 
 export default function Matcha() {
   return (
     <section className="matcha">
-      <div className="glow-orb" style={{ width: 360, height: 360, top: -80, left: '50%', transform: 'translateX(-50%)', background: 'var(--magenta)', opacity: 0.3 }} />
+      <div className="matcha-dotgrid">
+        <DotGrid
+          dotSize={2}
+          gap={20}
+          baseColor="#3A2E52"
+          activeColor="#6B4FBB"
+          proximity={110}
+          shockRadius={180}
+          shockStrength={2.5}
+          resistance={500}
+          returnDuration={1.4}
+        />
+      </div>
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <Reveal as="div" className="matcha__card">
           <p className="matcha__quote">
