@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import FluidGlass from './FluidGlass.jsx'
 import FallingText from './FallingText.jsx'
 import BorderGlow from './BorderGlow.jsx'
+import SoftAurora from './SoftAurora.jsx'
 import useMagnetic from '../hooks/useMagnetic.js'
 import { GLOW_COLOR, GLOW_COLORS } from '../lib/borderGlowTheme.js'
 
@@ -16,6 +17,23 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero">
+      <div className="hero-aurora">
+        <SoftAurora
+          speed={0.6}
+          scale={1.6}
+          brightness={0.85}
+          color1="#8C6FC7"
+          color2="#B33FA1"
+          noiseFrequency={2.5}
+          noiseAmplitude={2.5}
+          bandHeight={0.4}
+          bandSpread={0.6}
+          octaveDecay={0.08}
+          colorSpeed={0.8}
+          enableMouseInteraction={true}
+          mouseInfluence={0.2}
+        />
+      </div>
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <BorderGlow
           className="glow-wrap"

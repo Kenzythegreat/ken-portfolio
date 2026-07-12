@@ -323,6 +323,12 @@ section { position: relative; }
   text-align: center;
 }
 
+.page-header-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .page-header__title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -336,6 +342,16 @@ section { position: relative; }
 .hero {
   padding: 96px 0 60px;
   overflow: hidden;
+  position: relative;
+}
+
+.hero-aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 720px;
+  z-index: 0;
 }
 
 .hero-fluid-glass {
@@ -1600,6 +1616,13 @@ section { position: relative; }
   transform-origin: center top;
   will-change: transform, height;
   transition: transform 0.05s linear, border-radius 0.05s linear;
+}
+
+.travel-hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--ink);
 }
 
 .travel-hero-image::before {

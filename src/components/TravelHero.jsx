@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import SoftAurora from './SoftAurora.jsx'
 
 const SHRINK_DISTANCE = 300
 const MIN_SCALE = 0.82
@@ -108,8 +109,24 @@ export default function TravelHero() {
       <div
         className="travel-hero-image"
         ref={imageRef}
-        style={{ backgroundImage: "url('/photos/travel/bali-1.jpg')" }}
       >
+        <div className="travel-hero-aurora">
+          <SoftAurora
+            speed={0.6}
+            scale={1.6}
+            brightness={0.9}
+            color1="#8C6FC7"
+            color2="#B33FA1"
+            noiseFrequency={2.5}
+            noiseAmplitude={2.5}
+            bandHeight={0.45}
+            bandSpread={0.6}
+            octaveDecay={0.08}
+            colorSpeed={0.8}
+            enableMouseInteraction={true}
+            mouseInfluence={0.2}
+          />
+        </div>
         <div className="travel-hero-overlay">
           <div className="travel-hero-card fade-up">
             <p className="eyebrow" style={{ justifyContent: 'center' }}>Ken Curtina</p>
