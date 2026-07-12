@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import HoverExpandRow from './HoverExpandRow.jsx'
 
 const FILES = [
   '2nd Post IG',
@@ -53,57 +54,16 @@ export default function ProofOfWork() {
 
   return (
     <section className="pow">
-      <div className="pow-track">
-        <div className="pow-row">
-          {[...IMAGES, ...IMAGES].map((img, i) => (
-            <button
-              type="button"
-              className="pow-item"
-              key={i}
-              onClick={() => setActive(img.full)}
-              aria-label="Open preview"
-            >
-              <img src={img.thumb} alt="" loading="lazy" />
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="wrap">
+        <HoverExpandRow images={IMAGES} onOpen={setActive} />
 
-      <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>By the Numbers</p>
+        <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>By the Numbers</p>
 
-      <div className="pow-track">
-        <div className="pow-row pow-row--reverse">
-          {[...LABELED_IMAGES, ...LABELED_IMAGES].map((img, i) => (
-            <button
-              type="button"
-              className="pow-item pow-item--labeled"
-              key={i}
-              onClick={() => setActive(img.full)}
-              aria-label="Open preview"
-            >
-              <img src={img.thumb} alt="" loading="lazy" />
-              <span className="pow-item__label">{img.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+        <HoverExpandRow images={LABELED_IMAGES} onOpen={setActive} reverse />
 
-      <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>Feedback From Clients</p>
+        <p className="eyebrow" style={{ justifyContent: 'center', display: 'flex', margin: '40px 0 24px' }}>Feedback From Clients</p>
 
-      <div className="pow-track">
-        <div className="pow-row">
-          {[...TESTIMONIAL_IMAGES, ...TESTIMONIAL_IMAGES].map((img, i) => (
-            <button
-              type="button"
-              className="pow-item"
-              key={i}
-              onClick={() => setActive(img.full)}
-              aria-label="Open testimonial"
-            >
-              <img src={img.thumb} alt="" loading="lazy" />
-            </button>
-          ))}
-        </div>
+        <HoverExpandRow images={TESTIMONIAL_IMAGES} onOpen={setActive} />
       </div>
 
       {active && (

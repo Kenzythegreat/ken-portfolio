@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const INTERACTIVE_SELECTOR = 'a, button, input, [role="button"], .btn, .pill, .tool-chip, .pow-item, .hub-node, .hub-core, .skill-card'
+const INTERACTIVE_SELECTOR = 'a, button, input, [role="button"], .btn, .pill, .tool-chip, .hover-row__item, .hub-node, .hub-core, .skill-card'
 
 export default function Cursor() {
   const dotRef = useRef(null)

@@ -570,79 +570,68 @@ section { position: relative; }
   padding: 56px 0;
 }
 
-.pow-track {
-  overflow: hidden;
-  width: 100%;
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-}
-
-.pow-row {
+.hover-row {
+  --hover-row-active-w: 320px;
+  --hover-row-rest-w: 44px;
   display: flex;
-  width: max-content;
-  gap: 18px;
-  animation: powMarquee 34s linear infinite;
+  align-items: stretch;
+  justify-content: center;
+  gap: 6px;
+  height: 320px;
+  margin-bottom: 8px;
 }
 
-.pow-row--reverse {
-  animation-direction: reverse;
-  animation-duration: 40s;
-}
-
-.pow-row:hover {
-  animation-play-state: paused;
-}
-
-@keyframes powMarquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.pow-item {
+.hover-row__item {
+  position: relative;
   flex-shrink: 0;
-  height: 280px;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(138, 138, 141, 0.25);
-  padding: 0;
-  background: none;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.pow-item:hover {
-  border-color: var(--violet);
-  transform: translateY(-3px);
-}
-
-.pow-item img {
   height: 100%;
-  width: auto;
-  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(138, 138, 141, 0.25);
+}
+
+.hover-row__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.pow-item--labeled {
-  height: auto;
-  display: flex;
-  flex-direction: column;
+.hover-row__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(11, 11, 13, 0.7), transparent 55%);
+  pointer-events: none;
 }
 
-.pow-item--labeled img {
-  height: 230px;
-  width: auto;
-}
-
-.pow-item__label {
-  padding: 10px 14px;
+.hover-row__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 14px 16px;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--silver);
-  border-top: 1px solid rgba(138, 138, 141, 0.25);
-  text-align: left;
+  color: var(--off-white);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .hover-row {
+    --hover-row-active-w: 220px;
+    --hover-row-rest-w: 28px;
+    height: 240px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .travel-card {
@@ -747,15 +736,6 @@ section { position: relative; }
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .pow-item { height: 200px; }
-  .pow-item--labeled { height: auto; }
-  .pow-item--labeled img { height: 160px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pow-row { animation: none; overflow-x: auto; }
-}
 
 /* ---------- MATCHA ---------- */
 .matcha {
