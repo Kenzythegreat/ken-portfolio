@@ -8,11 +8,18 @@ const FILES = [
   'Dayo Feedback from Raylu',
   'First Slide',
   'GTM Strat',
-  'July 10, 2026 - IG Post',
-  'July 10, 26 - LinkedIn Post',
-  'July 6, 2026',
-  'July 9, 2026 - IG Post',
+  'July 10 2026 - IG Post',
+  'July 10 26 - LinkedIn Post',
+  'July 6 2026',
+  'July 9 2026 - IG Post',
   'Kelly at Arbor',
+  'A reply is not a win yet',
+  'Alessandro Feedback',
+  'Fresh Angles Beat Bigger List LinkedIn Post',
+  'July 13 2026 IG Post',
+  'July 15 2026 IG Post',
+  'July 17 IG POST NEW',
+  "Your Domain isn't the biggest Problem",
 ]
 
 const IMAGES = FILES.map((name) => ({
